@@ -40,10 +40,4 @@ jobs:
           PRISMA_API_URL: https://api2.eu.prismacloud.io
         with:
           api-key: ${{ secrets.BC_API_KEY }}
-          directory: "."
-          soft_fail: true
-          framework: terraform
-          output_format: cli
-          quiet: true
-          download_external_modules: true
           log_level: DEBUG
