@@ -6,9 +6,14 @@ on:
       - '*'
       
 jobs:
-  
+     
+  prismacloud-cli-install:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      
       - name: Checkout code      
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2    
       - name: Run IaC Scan
         id: Bridgecrew
         uses: bridgecrewio/bridgecrew-action@master
