@@ -10,21 +10,33 @@ jobs:
   prismacloud-cli-install:
     runs-on: ubuntu-latest
  
-    steps:
+#    steps:
       
-      - name: Checkout code      
+#      - name: Checkout code      
+#        uses: actions/checkout@v2
+#      - name: Run IaC Scan
+#        id: Bridgecrew
+#        uses: bridgecrewio/bridgecrew-action@master
+#        env:
+#          PRISMA_API_URL: https://api2.eu.prismacloud.io
+#        with:
+#         api-key: ${{ secrets.BC_API_KEY }}
+#         directory: "."
+#         soft_fail: true
+#         framework: terraform
+#         output_format: cli
+#         quiet: true
+#         download_external_modules: true
+#         log_level: DEBUG
+
+    steps:
+      - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Run IaC Scan
-        id: Bridgecrew
-        uses: bridgecrewio/bridgecrew-action@master
+
+      - name: Run Prisma Cloud 
+        id: prisma-cloud
+        uses: bridgecrewio/checkov-action@master
         env:
           PRISMA_API_URL: https://api2.eu.prismacloud.io
         with:
-         api-key: ${{ secrets.BC_API_KEY }}
-         directory: "."
-         soft_fail: true
-         framework: terraform
-         output_format: cli
-         quiet: true
-         download_external_modules: true
-         log_level: DEBUG
+          api-key: ${{ secrets.BC_API_KEY }}
