@@ -34,3 +34,4 @@ resource "azurerm_subnet" "bad_example" {
 
   # No network security group associated
 }
+
